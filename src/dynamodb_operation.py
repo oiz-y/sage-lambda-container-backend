@@ -14,11 +14,12 @@ def get_group_data(degree):
     return response['Items']
 
 
-def put_group_data(_id, group):
+def put_group_data(_id, group, polynomial):
     with result_table.batch_writer() as batch:
         batch.put_item(
             Item={
                 'group': group,
-                'id': _id
+                'id': _id,
+                'polynomial': polynomial
             }
         )
