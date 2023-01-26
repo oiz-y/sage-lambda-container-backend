@@ -12,6 +12,7 @@ RUN sudo apt-get update \
 
 RUN /home/sage/sage/local/var/lib/sage/venv-python3.10.5/bin/pip3 install boto3
 
+COPY ./Dockerfile ./
 COPY ./src/* ./
 COPY ./sagebin/* /home/sage/sage/src/bin/
 

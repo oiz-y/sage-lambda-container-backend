@@ -114,7 +114,7 @@ def main(event, context):
 
     logging.info(_id)
 
-    put_group_data(_id, target_group)
+    put_group_data(_id, target_group, polynomial)
 
 
 if __name__ == '__main__':
