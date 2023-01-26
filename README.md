@@ -6,7 +6,7 @@ This backend is running in the following application.
 
 ### https://galoisapp.com/
 
-Project link : https://github.com/quryu-1/sage-lambda-container-app
+Project link : https://github.com/oiz-y/sage-lambda-container-app
 
 ## Reference:book:
 
@@ -15,5 +15,4 @@ Project link : https://github.com/quryu-1/sage-lambda-container-app
 
 ## License:bell:
 
-- [MIT](https://github.com/quryu-1/sage-lambda-container-backend/blob/main/LICENSE)
-
+- [MIT](https://github.com/oiz-y/sage-lambda-container-backend/blob/main/LICENSE)
