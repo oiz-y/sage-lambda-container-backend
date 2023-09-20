@@ -1,3 +1,4 @@
+import datetime
 import boto3
 from boto3.dynamodb.conditions import Key
 
@@ -5,6 +6,11 @@ from boto3.dynamodb.conditions import Key
 dynamodb = boto3.resource('dynamodb', region_name='ap-northeast-1')
 conjugacy_rate_table = dynamodb.Table('sage-conjugacy-rate')
 result_table = dynamodb.Table('sage-result')
+
+
+def get_jst_date():
+    tz_jst = datetime.timezone(datetime.timedelta(hours=9))
+    return datetime.datetime.now(tz_jst).strftime('%Y/%m/%d %H:%M:%S')
 
 
 def get_group_data(degree):
@@ -20,6 +26,7 @@ def put_group_data(_id, group, polynomial):
             Item={
                 'group': group,
                 'id': _id,
-                'polynomial': polynomial
+                'polynomial': polynomial,
+                'date': get_jst_date(),
             }
         )
