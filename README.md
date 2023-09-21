@@ -53,3 +53,20 @@ docker run sample3
 The degree of x^2 - 1 is 2.
 [{'conjugacy_rate': '{"1,1": "0.50000000000000000000", "2": "0.50000000000000000000"}', 'degree': Decimal('2'), 'group_name': 'S2'}]
 ```
+
+# sample4
+
+- ビルド～コンテナ起動
+
+```
+docker build -t sample4 .
+docker run sample4
+```
+
+- コンテナ実行結果
+
+```
+[ec2-user@ip-172-31-34-73 sage-lambda-container-backend]$ docker run sample4
+docker: Error response from daemon: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: exec: "/usr/local/bin/sage-entrypoint": permission denied: unknown.
+ERRO[0000] error waiting for container: context canceled
+```
