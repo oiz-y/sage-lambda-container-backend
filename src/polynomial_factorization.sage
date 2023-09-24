@@ -119,7 +119,7 @@ def main(event, context):
 
 if __name__ == '__main__':
     args = sys.argv
-    print(args)
+    logging.info(args)
     event = {
         'inputPolynomial': args[1],
         'primeRange': args[2],
