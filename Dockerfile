@@ -1,19 +1,22 @@
-FROM sagemath/sagemath
+FROM sagemath/sagemath:10.1
 
-WORKDIR /var/task
+# Lambda container work directory
+WORKDIR /var/task/
 
-RUN sudo chown sage:sage /var/task \
- && sudo chmod 777 /home/sage \
- && mkdir /home/sage/.sage \
- && sudo chmod 777 /home/sage/.sage
+# Resolve the error in Lambda container:
+# "/usr/local/bin/sage-entrypoint: line 8: exec: sage: not found"
+RUN sudo chmod -R 777 /home/sage
 
-RUN sudo apt-get update \
+# Absolute path to pip3
+ENV PATH ${PATH}:/home/sage/sage/local/var/lib/sage/venv-python3.11.1/bin
+
+RUN pip3 install boto3 \
+ && sudo apt-get update \
  && sudo apt-get install -y jq
 
-RUN /home/sage/sage/local/var/lib/sage/venv-python3.10.5/bin/pip3 install boto3
+COPY ./src/* /var/task/
+COPY ./sage-bin/* /home/sage/sage/src/bin/
 
-COPY ./Dockerfile ./
-COPY ./src/* ./
-COPY ./sagebin/* /home/sage/sage/src/bin/
+RUN sudo chmod -R 755 /var/task/
 
-CMD ["sh", "run.sh"]
+CMD ["./run.sh"]
