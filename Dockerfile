@@ -15,7 +15,7 @@ RUN pip3 install boto3 \
  && sudo apt-get install -y jq
 
 COPY ./src/* /var/task/
-COPY ./sage-bin/* /home/sage/sage/src/bin/
+COPY ./sage-bin/sage-run /home/sage/sage/src/bin/
 
 RUN sudo chmod -R 755 /var/task/
 
