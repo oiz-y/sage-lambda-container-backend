@@ -17,6 +17,7 @@ RUN pip3 install boto3 \
 COPY ./src/* /var/task/
 COPY ./sage-bin/* /home/sage/sage/src/bin/
 
-RUN sudo chmod -R 755 /var/task/
+RUN sudo chmod -R 755 /var/task/ \
+ && sudo chmod 777 /home/sage/sage/src/bin/*
 
 CMD ["./run.sh"]
